@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Teste Canvas</title>
+    </head>
+    <body>
+        <div>
+            <canvas id="myCanvas" style="background-image: url(img/frente.gif); width: 300; height: 400; background-repeat: no-repeat;"></canvas>
+            <script>
+                
+                
+                function attTexto() {
+                    var texto = document.getElementById("texto").value;
+                    var c = document.getElementById("myCanvas");
+                    var ctx = c.getContext("2d");
+                    ctx.clearRect(0, 0, c.width, c.height);
+                    ctx.font = "10px Arial";
+                    ctx.fillText(texto, 125, 70);
+                }
+            </script>
+            
+            <h3>Digite um texto:</h3>
+            <input type="text" id="texto" name="texto">
+            <input type="button" value="Inserir" onclick="attTexto()"><br>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
