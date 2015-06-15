@@ -9,15 +9,28 @@
         <title>Teste Canvas</title>
     </head>
     <body>
-        <div>
+        <div class="app">
             <canvas id="myCanvas" style="background-image: url(img/frente.gif); width: 300; height: 400; background-repeat: no-repeat;"></canvas>
             <script>
                 
+                c = document.getElementById("myCanvas");
+                ctx = c.getContext("2d");
+                
+                function attImagem() {
+                    var width = 80;
+                    var height = 40;
+                    var img = new Image();
+                    
+                    img.onload = function () {
+                        ctx.clearRect(0, 0, c.width, c.height);
+                        ctx.drawImage(img, 115, 60, width, height);
+                    }
+                    img.src = document.getElementById("link").value;
+                }
                 
                 function attTexto() {
                     var texto = document.getElementById("texto").value;
-                    var c = document.getElementById("myCanvas");
-                    var ctx = c.getContext("2d");
+                    
                     ctx.clearRect(0, 0, c.width, c.height);
                     ctx.font = "10px Arial";
                     ctx.fillText(texto, 125, 70);
@@ -26,7 +39,12 @@
             
             <h3>Digite um texto:</h3>
             <input type="text" id="texto" name="texto">
-            <input type="button" value="Inserir" onclick="attTexto()"><br>
+            <input type="button" id="inserirTexto" value="Inserir Texto" onclick="attTexto()"><br><br>
+            
+            <h3>Insira uma imagem:</h3>
+            <input type="text" id="link" name="link">
+            <input type="button" id="inserirImagem" value="Inserir Imagem" onclick="attImagem()"><br><br>
+            
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
